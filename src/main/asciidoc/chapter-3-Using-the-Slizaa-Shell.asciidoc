@@ -1,0 +1,83 @@
+[[using-the-slizaa-shell]]
+== Using the Slizaa Shell
+
+help
+
+=== Slizaa Admin Commands
+gc: Run the garbage collector
+memUsage: Memory usage
+
+=== Slizaa Backend Commands
+installExtensions: Install backend extensions.
+listAvailableExtensions: List all available backend extensions.
+listInstalledExtensions: List installed extensions.
+
+=== Slizaa Graph Databases Commands
+createDB: Create a new graph databases.
+deleteDB: Delete an existing graph database.
+listDBs: List all configured graph databases.
+parseDB: Parse the definied content.
+
+startDB: Start the specified database.
+SYNOPSYS
+
+startDB [-d] string
+
+OPTIONS
+-d or --databaseId  string [Mandatory]
+
+
+stopDB: Stop the specified database.
+
+SYNOPSYS
+stopDB [-d] string
+
+OPTIONS
+-d or --databaseId  string [Mandatory]
+
+
+===  Slizaa Graph Databases Commands - Content Definition
+listContentDefinitionProviderFactories: List available content definition provider factories.
+
+SYNOPSYS
+listContentDefinitionProviderFactories
+
+
+setContentDefinitionProvider: Define the content that should be analyzed.
+
+SYNOPSYS
+setContentDefinitionProvider [-d] string  [-f] string  [-c] string
+
+OPTIONS
+-d or --databaseId  string [Mandatory]
+-f or --factoryId  string [Mandatory]
+-c or --contentDefinition  string [Mandatory]
+
+
+showResolvedContentDefinitions: List the content definitions for the specified database.
+
+SYNOPSYS
+showResolvedContentDefinitions [-d] string  [-f]
+
+OPTIONS
+-d or --databaseId  string [Mandatory]
+-f or --showFiles [Optional, default = false]
+
+=== Slizaa Graph Databases Commands - Hierarchical Graphs
+
+createHierarchicalGraph: Create a new hierarchical graph.
+
+SYNOPSYS
+createHierarchicalGraph [-d] string  [-h] string
+
+OPTIONS
+-d or --databaseId  string [Mandatory]
+-h or --hierarchicalGraphId  string [Mandatory]
+
+deleteHierarchicalGraph: Delete an existing hierarchical graph.
+SYNOPSYS
+deleteHierarchicalGraph [-d] string  [-h] string
+
+OPTIONS
+-d or --databaseId  string [Mandatory]
+-h or --hierarchicalGraphId  string [Mandatory]
