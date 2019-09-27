@@ -17,16 +17,22 @@ The Slizaa starts up and listens at http://localhost:8085/slizaa
 
 === Using the Shell to configure the Slizaa Server
 
+----
 shell:> help
+----
 
+----
 shell:> createDB test
 Graph Databases:
 - GraphDatabase(identifier=test, contentDefinition=null, hierarchicalGraphs=[], state=INITIAL, port=6802, availableActions=[setContentDefinitionProvider, delete])
+----
 
+----
 shell:>setContentDefinitionProvider test directory "c:\\tmp\\slizaa"
 Graph Databases:
 - GraphDatabase(identifier=test, contentDefinition=ContentDefinition(factoryId=io.codekontor.slizaa.scanner.contentdefinition.DirectoryBasedContentDefinitionProviderFactory, factoryIdShortForm=dire
 ctory, definition=c:\tmp\slizaa), hierarchicalGraphs=[], state=CONFIGURED, port=6802, availableActions=[parse, setContentDefinitionProvider, delete])
+----
 
 // TODO: Warum kann man nicht jetzt schon den Hierarchischen Graph setzen?
 
