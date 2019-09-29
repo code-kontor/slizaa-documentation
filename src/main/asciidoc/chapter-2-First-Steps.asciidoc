@@ -1,9 +1,9 @@
 [[first_steps]]
 == First Steps
 
-=== Donwload and Installation
+=== Download and Install
 
-Download the Slizaa distribution.
+If you haven't downloaded Slizaa already, go to https://www.codekontor.io/slizaa and download the slizza archive file.
 
 Unpack the archive to an arbitrary location on your computer.
 
@@ -11,46 +11,27 @@ Configure your Slizaa Installation (optional)
 
 === Start Slizaa
 
+----
 java -jar slizaa-1.0.0.jar   // TODO: add start scripts, rename jar file!
+----
 
 The Slizaa starts up and listens at http://localhost:8085/slizaa
 
-=== Using the Shell to configure the Slizaa Server
+=== Create a structure database
 
-----
-shell:> help
-----
+include::{generatedDocDir}/gettingstarted-listdbs.adoc[]
 
-----
-shell:> createDB test
-Graph Databases:
-- GraphDatabase(identifier=test, contentDefinition=null, hierarchicalGraphs=[], state=INITIAL, port=6802, availableActions=[setContentDefinitionProvider, delete])
-----
+include::{generatedDocDir}/gettingstarted-createdb.adoc[]
 
-----
-shell:>setContentDefinitionProvider test directory "c:\\tmp\\slizaa"
-Graph Databases:
-- GraphDatabase(identifier=test, contentDefinition=ContentDefinition(factoryId=io.codekontor.slizaa.scanner.contentdefinition.DirectoryBasedContentDefinitionProviderFactory, factoryIdShortForm=dire
-ctory, definition=c:\tmp\slizaa), hierarchicalGraphs=[], state=CONFIGURED, port=6802, availableActions=[parse, setContentDefinitionProvider, delete])
-----
+include::{generatedDocDir}/gettingstarted-setcontentdefinitionprovider.adoc[]
+
 
 // TODO: Warum kann man nicht jetzt schon den Hierarchischen Graph setzen?
 
-shell:> parseDB test
-10% (Parse)
-[...]
-100% (Parse)
-Graph Databases:
-- GraphDatabase(identifier=test, contentDefinition=ContentDefinition(factoryId=io.codekontor.slizaa.scanner.contentdefinition.DirectoryBasedContentDefinitionProviderFactory, factoryIdShortForm=dire
-ctory, definition=c:\tmp\slizaa), hierarchicalGraphs=[], state=RUNNING, port=6802, availableActions=[stop, delete])
+include::{generatedDocDir}/gettingstarted-parsedb.adoc[]
 
+=== Create a hierarchical graph
 
-shell:>createHierarchicalGraph test01 Graph_01
-2% (Creating first level elements...)
-[...]
-100% (Creating dependencies...)
-Graph Databases:
-- GraphDatabase(identifier=test, contentDefinition=ContentDefinition(factoryId=io.codekontor.slizaa.scanner.contentdefinition.DirectoryBasedContentDefinitionProviderFactory, factoryIdShortForm=dire
-ctory, definition=c:\tmp\slizaa), hierarchicalGraphs=[HierarchicalGraph(identifier=Graph_01)], state=RUNNING, port=6802, availableActions=[stop, delete])
+include::{generatedDocDir}/gettingstarted-createhierarchicalgraph.adoc[]
 
 DSM-UI !!

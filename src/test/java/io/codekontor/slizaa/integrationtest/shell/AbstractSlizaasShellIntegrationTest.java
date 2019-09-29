@@ -18,28 +18,19 @@
 package io.codekontor.slizaa.integrationtest.shell;
 
 import io.codekontor.slizaa.integrationtest.AbstractSlizaaIntegrationTest;
-import org.junit.Test;
+import io.codekontor.slizaa.server.command.SlizaaPromptProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.shell.standard.commands.Help;
 
 import java.io.IOException;
 
-public class AdminCommandTest extends AbstractSlizaasShellIntegrationTest {
+public abstract class AbstractSlizaasShellIntegrationTest extends AbstractSlizaaIntegrationTest {
 
-    @Test
-    public void gc() throws IOException {
+    @Autowired
+    private Help help;
 
-        String cmd = "gc";
-        String cmdName = "gc";
-
-        String result = executeCommand(cmd);
-
-        StringBuilder cmdExample = new StringBuilder();
-        cmdExample.append("[source]").append("\n");
-        cmdExample.append("----").append("\n");
-        cmdExample.append(prompt()).append(cmd).append("\n");
-        cmdExample.append(String.valueOf(result));
-        cmdExample.append("\n");
-        cmdExample.append("----").append("\n");
-
-        writeToResultFile(cmdName, "example", cmdExample.toString());
+    protected CharSequence getHelpForCommand(String commandName) throws IOException {
+        CharSequence helpString = help.help(commandName);
+        return helpString.subSequence(2, helpString.length() - 2);
     }
 }

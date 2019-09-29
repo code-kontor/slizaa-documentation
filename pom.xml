@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Slizaa Documentation - Slizaa Static Software Analysis Tools
+    Copyright © 2019 Code-Kontor GmbH and others (slizaa@codekontor.io)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -11,7 +30,6 @@
     <groupId>io.codekontor.slizaa.documentation</groupId>
     <artifactId>slizaa-documentation</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>Slizaa Documentation</name>
 
     <properties>
@@ -31,12 +49,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.beust</groupId>
-            <artifactId>jcommander</artifactId>
-            <version>1.78</version>
-            
         </dependency>
     </dependencies>
 
@@ -74,7 +86,7 @@
               <executions>
                 <execution>
                   <id>output-html</id>
-                  <phase>generate-resources</phase>
+                  <phase>post-integration-test</phase>
                   <goals>
                     <goal>process-asciidoc</goal>
                   </goals>
@@ -84,7 +96,7 @@
                 </execution>
                 <execution>
                   <id>output-pdf</id>
-                  <phase>generate-resources</phase>
+                  <phase>post-integration-test</phase>
                   <goals>
                     <goal>process-asciidoc</goal>
                   </goals>
