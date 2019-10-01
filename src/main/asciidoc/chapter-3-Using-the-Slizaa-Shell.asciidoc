@@ -1,21 +1,62 @@
 [[using-the-slizaa-shell]]
 == Using the Slizaa Shell
 
-=== Slizaa Graph Databases Commands
+=== Admin Commands
+
+The admin command group contains several commands to monitor and control the overall state
+of the Slizaa server instance.
+
+==== Show Memory Usage
+
+You can show the current memory usage of a Slizaa server instance using the command `memUsage`.
+The command prints the memory currently used as well as the total memory on the console.
+
+*Definition*
+
+include::{generatedDocDir}/cmdlinehelp-memUsage.adoc[]
+
+*Example*
+
+include::{generatedDocDir}/cmdlineexample-memUsage.adoc[]
+
+==== Run the Garbage Collector
+
+Although it is usually not necessary, you can manually run the garbage collector
+using the command `gc`.
+
+*Definition*
+
+include::{generatedDocDir}/cmdlinehelp-gc.adoc[]
+
+*Example*
+
+include::{generatedDocDir}/cmdlineexample-gc.adoc[]
+
+=== Graph Databases Commands
 
 ==== List all configured graph databases
 
 You can use the listDBs command to list the graph databases configured in a Slizaa instance.
 
+*Definition*
+
 include::{generatedDocDir}/cmdlinehelp-listdbs.adoc[]
+
+*Example*
 
 ==== Create a new graph databases
 
 To create a new database instance in an exsiting Slizaa instance, use the createDB command.
 
+*Definition*
+
 include::{generatedDocDir}/cmdlinehelp-createdb.adoc[]
 
+*Example*
+
 ==== Start the specified database
+
+*Definition*
 
 To start an existing database instance, use the startDB command.
 
@@ -23,11 +64,15 @@ include::{generatedDocDir}/cmdlinehelp-startdb.adoc[]
 
 ==== Stop the specified database.
 
+*Definition*
+
 To stop an existing database instance, use the stopDB command.
 
 include::{generatedDocDir}/cmdlinehelp-stopdb.adoc[]
 
 ==== Delete an existing graph database
+
+*Definition*
 
 To delete an existing database instance, use the deleteDB command.
 
@@ -37,16 +82,32 @@ include::{generatedDocDir}/cmdlinehelp-deletedb.adoc[]
 
 To parse the sepcified content for a database, use the parseDB command.
 
+*Definition*
+
 include::{generatedDocDir}/cmdlinehelp-parsedb.adoc[]
+
+*Example*
+
+include::{generatedDocDir}/cmdlineexample-parsedb.adoc[]
 
 ===  Slizaa Graph Databases Commands - Content Definition
 
+==== Specify the content to be analyzed.
+
+*Definition*
+
 include::{generatedDocDir}/cmdlinehelp-setcontentdefinitionprovider.adoc[]
 
+==== List the available Content Definition Types
+
+*Definition*
+
 include::{generatedDocDir}/cmdlinehelp-listcontentdefinitionproviderfactories.adoc[]
+
+*Definition*
 
 include::{generatedDocDir}/cmdlinehelp-showresolvedcontentdefinitions.adoc[]
 
 listContentDefinitionProviderFactories
 showResolvedContentDefinitions
-setContentDefinitionProvider
+
