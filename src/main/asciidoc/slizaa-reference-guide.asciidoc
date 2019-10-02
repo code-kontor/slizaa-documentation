@@ -2,8 +2,10 @@
 :revdate: {docdate}
 :toc: right
 :sectanchors:
-:Author: Gerd W&uml;therich
+:Author: Gerd Wütherich
 :generatedDocDir: ../../../target/slizaa-asciidoc
+:sectnums:
+:sectnumlevels: 4
 
 [[Preface]]
 == Preface

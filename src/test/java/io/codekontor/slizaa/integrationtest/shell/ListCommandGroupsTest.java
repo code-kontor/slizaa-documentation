@@ -24,7 +24,7 @@ import org.springframework.shell.MethodTarget;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ListCommandGroupsTest extends AbstractSlizaasShellIntegrationTest {
+public class ListCommandGroupsTest extends AbstractSlizaaIntegrationTest {
 
     @Test
     public void commandGroupList() {

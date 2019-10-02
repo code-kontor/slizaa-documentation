@@ -20,12 +20,18 @@ package io.codekontor.slizaa.integrationtest;
 import io.codekontor.slizaa.server.SlizaaServerConfiguration;
 import io.codekontor.slizaa.server.command.SlizaaPromptProvider;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.shell.Shell;
 import org.springframework.shell.jline.InteractiveShellApplicationRunner;
+import org.springframework.shell.standard.commands.Help;
 import org.springframework.shell.table.Table;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -38,7 +44,18 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(properties = {InteractiveShellApplicationRunner.SPRING_SHELL_INTERACTIVE_ENABLED + "=" + false, "graphql.servlet.websocket.enabled=false"})
 @ContextConfiguration(classes = SlizaaServerConfiguration.class)
+@DirtiesContext
 public abstract class AbstractSlizaaIntegrationTest {
+
+    @ClassRule
+    public static TemporaryFolder folder = new TemporaryFolder();
+
+    @BeforeClass
+    public static void configureSlizaaInstance() throws IOException {
+        File workDir = folder.newFolder();
+        System.setProperty("database.rootDirectory", workDir + File.separator + "dbs");
+        System.setProperty("configuration.rootDirectory", workDir + File.separator + "cfg");
+    }
 
     @FunctionalInterface
     public interface CommandResultInterceptor {
@@ -49,9 +66,23 @@ public abstract class AbstractSlizaaIntegrationTest {
     private Shell shell;
 
     @Autowired
+    private Help help;
+
+    @Autowired
     private SlizaaPromptProvider slizaaPromptProvider;
 
     private File documentationTargetDirectory;
+
+    protected CharSequence getHelpForCommand(String commandName) throws IOException {
+        CharSequence helpString = help.help(commandName);
+        return helpString.subSequence(2, helpString.length() - 2);
+    }
+
+    @Before
+    public void prepare() {
+        deleteGeneratedDocs();
+        executeCommandAndWriteToResultFile("installExtensions io.codekontor.slizaa.extensions.jtype_1.0.0");
+    }
 
     protected Shell shell() {
         return this.shell;

@@ -27,22 +27,6 @@ import java.io.IOException;
 
 public class GettingStartedTest extends AbstractSlizaaIntegrationTest {
 
-    @ClassRule
-    public static TemporaryFolder folder = new TemporaryFolder();
-
-    @BeforeClass
-    public static void configureSlizaaInstance() throws IOException {
-        File workDir = folder.newFolder();
-        System.setProperty("database.rootDirectory", workDir + File.separator + "dbs");
-        System.setProperty("configuration.rootDirectory", workDir + File.separator + "cfg");
-    }
-
-    @Before
-    public void prepare() {
-        deleteGeneratedDocs();
-        executeCommandAndWriteToResultFile("installExtensions io.codekontor.slizaa.extensions.jtype_1.0.0");
-    }
-
     @Test
     public void testIt() {
 

@@ -18,15 +18,40 @@
 package io.codekontor.slizaa.integrationtest.shell;
 
 import io.codekontor.slizaa.integrationtest.AbstractSlizaaIntegrationTest;
+
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.Test;
 
 import java.io.IOException;
 
-public class CmdLineExampleTest extends AbstractSlizaasShellIntegrationTest {
+public class CmdLineExampleTest extends AbstractSlizaaIntegrationTest {
 
     @Test
     public void adminCommandExamples() throws IOException {
-        executeCommandAndWriteToResultFile("memUsage");
-        executeCommandAndWriteToResultFile("gc");
+
+        assertThat(executeCommandAndWriteToResultFile("memUsage"))
+                .contains("Current Memory Usage:");
+        assertThat(executeCommandAndWriteToResultFile("gc"))
+                .contains("Current Memory Usage:");
+
+        assertThat(executeCommandAndWriteToResultFile("listDBs"))
+                .contains("No database configured.");
+        assertThat(executeCommandAndWriteToResultFile("createDB exampleDB"))
+                .contains("|exampleDB |INITIAL|");
+        assertThat(executeCommandAndWriteToResultFile("setContentDefinitionProvider exampleDB directory c:\\tmp\\sl"))
+                .contains("|exampleDB |CONFIGURED|");
+        assertThat(executeCommandAndWriteToResultFile("parseDB exampleDB"))
+                .contains("|exampleDB |RUNNING|");
+        assertThat(executeCommandAndWriteToResultFile("stopDB exampleDB"))
+                .contains("|exampleDB |NOT_RUNNING|");
+        assertThat(executeCommandAndWriteToResultFile("startDB exampleDB"))
+                .contains("|exampleDB |RUNNING|");
+        assertThat(executeCommandAndWriteToResultFile("listDBs"))
+                .contains("|exampleDB |RUNNING|");
+        assertThat(executeCommandAndWriteToResultFile("stopDB exampleDB"))
+                .contains("|exampleDB |NOT_RUNNING|");
+        assertThat(executeCommandAndWriteToResultFile("deleteDB exampleDB"))
+                .contains("No database configured.");
     }
 }

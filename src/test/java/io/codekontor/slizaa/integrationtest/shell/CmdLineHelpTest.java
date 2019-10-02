@@ -24,7 +24,7 @@ import org.springframework.shell.MethodTarget;
 import java.io.IOException;
 import java.util.Map;
 
-public class CmdLineHelpTest extends AbstractSlizaasShellIntegrationTest {
+public class CmdLineHelpTest extends AbstractSlizaaIntegrationTest {
 
     @Test
     public void generateHelp() {
