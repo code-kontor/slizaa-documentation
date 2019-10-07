@@ -18,41 +18,27 @@
 package io.codekontor.slizaa.integrationtest.gettingstarted;
 
 import io.codekontor.slizaa.integrationtest.AbstractSlizaaIntegrationTest;
-import org.junit.*;
-import org.junit.rules.TemporaryFolder;
-import org.springframework.test.context.TestPropertySource;
+import io.codekontor.slizaa.integrationtest.util.TestContentInitializer;
+import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
 public class GettingStartedTest extends AbstractSlizaaIntegrationTest {
 
     @Test
-    public void testIt() {
+    public void testIt() throws IOException {
 
-        //
         executeCommandAndWriteToResultFile("help");
 
-        //
         executeCommandAndWriteToResultFile("listDBs");
 
-        //
         executeCommandAndWriteToResultFile("createDB exampleDB");
-
-        //
-        executeCommandAndWriteToResultFile("setContentDefinitionProvider exampleDB directory c:\\tmp\\example",
-                result -> result
-                        .replace("|setContentDefinitionProvider,|", "|setC...,         |")
-                        .replace("            |\n", "|\n")
-                        .replace("+-----------------------------+", "+-----------------+"));
-
-        //
+        executeCommandAndWriteToResultFile("setContentDefinitionProvider exampleDB directory " +
+                        TestContentInitializer.instance().getExampleContentPath());
         executeCommandAndWriteToResultFile("parseDB exampleDB");
 
-        //
         executeCommandAndWriteToResultFile("createHierarchicalGraph exampleDB hg01");
 
-        //
         executeCommandAndWriteToResultFile("listDBs");
     }
 }

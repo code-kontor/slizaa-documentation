@@ -18,17 +18,20 @@
 package io.codekontor.slizaa.integrationtest.shell;
 
 import io.codekontor.slizaa.integrationtest.AbstractSlizaaIntegrationTest;
-
-import static org.assertj.core.api.Assertions.*;
-
+import io.codekontor.slizaa.integrationtest.util.TestContentInitializer;
 import org.junit.Test;
 
 import java.io.IOException;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CmdLineExampleTest extends AbstractSlizaaIntegrationTest {
 
     @Test
-    public void adminCommandExamples() throws IOException {
+    public void commandExamples() throws IOException {
+
+        assertThat(executeCommandAndWriteToResultFile("help"))
+                .contains("AVAILABLE COMMANDS");
 
         assertThat(executeCommandAndWriteToResultFile("memUsage"))
                 .contains("Current Memory Usage:");
@@ -39,8 +42,14 @@ public class CmdLineExampleTest extends AbstractSlizaaIntegrationTest {
                 .contains("No database configured.");
         assertThat(executeCommandAndWriteToResultFile("createDB exampleDB"))
                 .contains("|exampleDB |INITIAL|");
-        assertThat(executeCommandAndWriteToResultFile("setContentDefinitionProvider exampleDB directory c:\\tmp\\sl"))
+
+        assertThat(executeCommandAndWriteToResultFile("setContentDefinitionProvider exampleDB directory " + TestContentInitializer.instance().getExampleContentPath()))
                 .contains("|exampleDB |CONFIGURED|");
+        assertThat(executeCommandAndWriteToResultFile("listContentDefinitionProviderFactories"))
+                .contains("Content Definition Provider Factories:");
+        assertThat(executeCommandAndWriteToResultFile("showResolvedContentDefinitions exampleDB", 10))
+                .contains("Content Definitions:");
+
         assertThat(executeCommandAndWriteToResultFile("parseDB exampleDB"))
                 .contains("|exampleDB |RUNNING|");
         assertThat(executeCommandAndWriteToResultFile("stopDB exampleDB"))

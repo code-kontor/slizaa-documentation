@@ -1,3 +1,7 @@
-[[introduction]]
-== Introduction
+[[slizaa-ui]]
+== The Slizaa Web UI
+
+Once you have started the Slizaa server, you can access the Slizaa UI:
+
+* Open a Web browser and access the following URL: https://localhost:8085/slizaa
 

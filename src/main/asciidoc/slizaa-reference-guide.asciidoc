@@ -14,8 +14,8 @@ This work is licensed under the http://www.gnu.org/licenses/agpl-3.0.html[GNU Af
 
 :numbered:
 
-include::chapter-1-introduction.asciidoc[]
+// include::chapter-1-introduction.asciidoc[]
 include::chapter-2-First-Steps.asciidoc[]
 include::chapter-3-Using-the-Slizaa-Shell.asciidoc[]
-include::chapter-4-Slizaa-UI.asciidoc[]
-include::chapter-5-Dependency-View.asciidoc[]
+// include::chapter-4-Slizaa-UI.asciidoc[]
+// include::chapter-6-Dependency-View.asciidoc[]

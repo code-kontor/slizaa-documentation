@@ -17,6 +17,7 @@
  */
 package io.codekontor.slizaa.integrationtest;
 
+import io.codekontor.slizaa.integrationtest.util.TestContentInitializer;
 import io.codekontor.slizaa.server.SlizaaServerConfiguration;
 import io.codekontor.slizaa.server.command.SlizaaPromptProvider;
 import org.junit.Assert;
@@ -38,8 +39,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(properties = {InteractiveShellApplicationRunner.SPRING_SHELL_INTERACTIVE_ENABLED + "=" + false, "graphql.servlet.websocket.enabled=false"})
@@ -79,7 +80,8 @@ public abstract class AbstractSlizaaIntegrationTest {
     }
 
     @Before
-    public void prepare() {
+    public void prepare() throws IOException {
+        TestContentInitializer.instance();
         deleteGeneratedDocs();
         executeCommandAndWriteToResultFile("installExtensions io.codekontor.slizaa.extensions.jtype_1.0.0");
     }
@@ -88,25 +90,33 @@ public abstract class AbstractSlizaaIntegrationTest {
         return this.shell;
     }
 
+    protected Help help() {
+        return this.help;
+    }
+
     protected String prompt() {
         return slizaaPromptProvider.getPrompt().toAnsi();
     }
 
     protected String executeCommand(String command) {
-        return formatExecutionResult(shell.evaluate(() -> command));
+        return formatExecutionResult(shell.evaluate(() -> command), -1);
     }
 
     protected String executeCommandAndWriteToResultFile(String command) {
-        return executeCommandAndWriteToResultFile(command, null);
+        return executeCommandAndWriteToResultFile(command, -1, null);
     }
 
-    protected String executeCommandAndWriteToResultFile(String command, CommandResultInterceptor commandResultInterceptor) {
+    protected String executeCommandAndWriteToResultFile(String command, int limitResult) {
+        return executeCommandAndWriteToResultFile(command, limitResult, null);
+    }
+
+    protected String executeCommandAndWriteToResultFile(String command, int limitResult, CommandResultInterceptor commandResultInterceptor) {
         int i = command.indexOf(' ');
         String fileName = i != -1 ? command.substring(0, i) : command;
-        return executeCommandAndWriteToResultFile(fileName, command, commandResultInterceptor);
+        return executeCommandAndWriteToResultFile(fileName, command, limitResult, commandResultInterceptor);
     }
 
-    protected String executeCommandAndWriteToResultFile(String fileName, String command, CommandResultInterceptor commandResultInterceptor) {
+    protected String executeCommandAndWriteToResultFile(String fileName, String command, int limitResult, CommandResultInterceptor commandResultInterceptor) {
 
         Object result = shell.evaluate(() -> command);
 
@@ -115,7 +125,7 @@ public abstract class AbstractSlizaaIntegrationTest {
         fileContent.append("----").append("\n");
         fileContent.append(prompt()).append(command).append("\n");
 
-        String commandFormat = formatExecutionResult(result);
+        String commandFormat = formatExecutionResult(result, limitResult);
         if (commandResultInterceptor != null) {
             commandFormat = commandResultInterceptor.interceptCommandResult(commandFormat);
         }
@@ -159,14 +169,45 @@ public abstract class AbstractSlizaaIntegrationTest {
         }
     }
 
-    protected String formatExecutionResult(Object result) {
+    protected String formatExecutionResult(Object result, int limitResult) {
         String resultAsString = null;
         if (result instanceof Table) {
             resultAsString = ((Table) result).render(80);
         } else {
             resultAsString = String.valueOf(result);
         }
-        return resultAsString;
+
+        String[] splittedStrings = resultAsString.split("\n");
+        int count = limitResult >= 0 ? limitResult : splittedStrings.length;
+        String[] finalStrings = new String[count];
+        for (int i = 0; i < count; i++) {
+            String splittedString = splittedStrings[i];
+            if (splittedString.length() > 80) {
+                if (isTableBorder(splittedString)) {
+                    finalStrings[i] = splittedString.substring(0, 79) + "+";
+                } else if (isTableLine(splittedString)) {
+                    String shortendLine = splittedString.substring(0, 79);
+                    if (shortendLine.trim().length() == 79) {
+                        shortendLine = shortendLine.substring(0, 76) + "...";
+                    }
+                    finalStrings[i] = shortendLine + "|";
+                } else {
+                    finalStrings[i] = splittedString.substring(0, 77) + "...";
+                }
+            } else {
+                finalStrings[i] = splittedString;
+            }
+        }
+
+        StringBuilder resultString = new StringBuilder();
+        resultString.append(Arrays.asList(finalStrings).stream().collect(Collectors.joining("\n")));
+        resultString.append("\n");
+
+        if (finalStrings.length < splittedStrings.length) {
+            resultString.append("\n[...]\n");
+        }
+
+        return resultString.toString();
     }
 
     protected void deleteGeneratedDocs() {
@@ -183,5 +224,19 @@ public abstract class AbstractSlizaaIntegrationTest {
             }
         }
         return documentationTargetDirectory;
+    }
+
+    private boolean isTableBorder(String line) {
+        char[] chars = line.trim().toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] != '-' && chars[i] != '+') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isTableLine(String line) {
+        return line.trim().startsWith("|") && line.trim().endsWith("|");
     }
 }

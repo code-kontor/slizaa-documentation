@@ -1,0 +1,123 @@
+[[shell-commands]]
+== Slizaa Shell Commands
+
+=== Admin Commands
+
+The admin command group contains several commands to monitor and control the overall state
+of the Slizaa server instance.
+
+==== Show Memory Usage
+
+You can show the current memory usage of a Slizaa server instance using the command `memUsage`.
+The command prints the memory currently used as well as the total memory on the console.
+
+include::{generatedDocDir}/cmdlineexample-memUsage.adoc[]
+
+The `memUsage` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-memUsage.adoc[]
+
+==== Run the Garbage Collector
+
+Although it is usually not necessary, you can manually run the garbage collector
+using the command `gc`.
+
+include::{generatedDocDir}/cmdlineexample-gc.adoc[]
+
+The `gc` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-gc.adoc[]
+
+=== Database Commands
+
+The commands in the database command group allows you to inspect and manipulate the structure databases in a Slizaa
+instance.
+
+==== List all configured databases
+
+You can use the command `listDBs` to list the databases configured in a Slizaa instance.
+
+include::{generatedDocDir}/cmdlineexample-listdbs.adoc[]
+
+The `listDBs` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-listdbs.adoc[]
+
+==== Create a new database
+
+To create a new database instance, use the `createDB` command.
+
+include::{generatedDocDir}/cmdlineexample-createdb.adoc[]
+
+The `createDB` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-createdb.adoc[]
+
+==== Start the specified database
+To start an existing database instance, use the command `startDB`:
+
+include::{generatedDocDir}/cmdlineexample-startdb.adoc[]
+
+The `startDB` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-startdb.adoc[]
+
+==== Stop the specified database.
+
+To stop an existing database instance, use the command `stopDB`.
+
+include::{generatedDocDir}/cmdlineexample-stopdb.adoc[]
+
+The `stopDB` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-stopdb.adoc[]
+
+==== Delete an existing graph database
+
+To delete an existing database instance, use the `deleteDB` command.
+
+include::{generatedDocDir}/cmdlineexample-deletedb.adoc[]
+
+The `deleteDB` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-deletedb.adoc[]
+
+==== Parse the definied content
+
+To parse the specified content for a database, use the `parseDB` command.
+
+include::{generatedDocDir}/cmdlineexample-parsedb.adoc[]
+
+The `parseDB` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-parsedb.adoc[]
+
+===  Slizaa Database Commands - Content Definition
+//
+// Slizaa Database Commands - Content Definition
+//
+
+==== Specify the content to be analyzed.
+
+include::{generatedDocDir}/cmdlineexample-setcontentdefinitionprovider.adoc[]
+
+The `setContentDefinitionProvider` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-setcontentdefinitionprovider.adoc[]
+
+==== List the available Content Definition Types
+
+include::{generatedDocDir}/cmdlineexample-listcontentdefinitionproviderfactories.adoc[]
+
+The `listContentDefinitionProviderFactories` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-listcontentdefinitionproviderfactories.adoc[]
+
+==== Show Resolved Content Definitions
+
+include::{generatedDocDir}/cmdlineexample-showresolvedcontentdefinitions.adoc[]
+
+The `showResolvedContentDefinitions` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-showresolvedcontentdefinitions.adoc[]
+

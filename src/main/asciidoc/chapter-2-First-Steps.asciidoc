@@ -1,32 +1,106 @@
 [[first_steps]]
+
 == First Steps
 
-=== Download and Install
+These instructions should help you get Slizaa up and running in 5 to 15 minutes.
 
-If you haven't downloaded Slizaa already, go to https://www.codekontor.io/slizaa and download the slizza archive file.
+=== Prerequisites
+Slizaa requires a Java SE 8 (or greater) environment to run. Refer to the following URL for details
+on how to download and install Java SE 8 or greater: http://www.oracle.com/technetwork/java/javase/
 
-Unpack the archive to an arbitrary location on your computer.
+=== Download and Installation
 
-Configure your Slizaa Installation (optional)
+* Open a Web browser and access the following URL: https://www.codekontor.io/slizaa/download/
+* Download the binary distribution that matches your system (zip for windows, tar.gz for unixes)
+* Extract the archive to a new folder on your hard drive (in this documentation we will reference this directory as `<SLIZAA_HOME>`)
 
-=== Start Slizaa
+=== Start the Server
+Open a command line console and change the directory to `<SLIZAA_HOME>`.
+
+To start the server, run the following command:
 
 ----
-java -jar slizaa-1.0.0.jar   // TODO: add start scripts, rename jar file!
+java -jar slizaa-web-1.0.0.M3.jar
 ----
 
-The Slizaa starts up and listens at http://localhost:8085/slizaa
+You should see the following information on the command line console:
 
-=== Create a structure database
+----
+         ___
+   _____/ (_)___  ____ _____ _
+  / ___/ / /_  / / __ `/ __ `/
+ (__  ) / / / /_/ /_/ / /_/ /
+/____/_/_/ /___/\__,_/\__,_/
+
+Copyright © 2019 Code-Kontor GmbH and others (slizaa@codekontor.io)
+
+[...]
+
+slizaa:>
+----
+
+You can now run your first command. To list all available commands, use the `help` command.
+
+[source]
+----
+slizaa:>help
+AVAILABLE COMMANDS
+
+Built-In Commands
+        clear: Clear the shell screen.
+        exit, quit: Exit the shell.
+        help: Display help about available commands.
+        script: Read and execute commands from a file.
+        stacktrace: Display the full stacktrace of the last error.
+
+Slizaa Admin Commands
+        gc: Run garbage collector.
+        memUsage: Memory usage.
+
+[...]
+
+----
+
+=== Setting up a Structure Database
+
+Before you can parse and analyze a software application, you have to create a instance of a structure database.
+A structure database is the place, where Slizaa stores the 'core' dependency information of a
+parsed software system. It is basically a graph database that can be accessed via the BOLT protocol.
+
+==== Listing all Defined Structure Databases
+
+To list all defined structure databases of a given Slizaa instance, execute the following command:
 
 include::{generatedDocDir}/gettingstarted-listdbs.adoc[]
 
+==== Creating a new Structure Database
+
+To create a new structure database instance, you can use the `createDB` command.
+
 include::{generatedDocDir}/gettingstarted-createdb.adoc[]
+
+==== Defining your Application Content
+
+Once you have created a new structure database, you must specify the content that should be analyzed.
+In Slizaa {slizaaVersion} there are two different content definition provider you can chosse of:
+
+* *directory*: Using the `directory` content definition provider you can specify an arbitrary folder on
+your local drive that contains the JAR files that Slizaa should parse.
+* *mvn*: Using the `mvn` content definition provider you can specify a list of maven artifact that
+Slizaa should parse. Slizaa automatically will download the specified artifacts during the parsing process.
+
+In this tutorial we use the `directory` content definition provider type to specify a folder on the local drive.
+Make sure that
+
+* the specified folder exists and
+* the specified folder contains on or more JAR files.
 
 include::{generatedDocDir}/gettingstarted-setcontentdefinitionprovider.adoc[]
 
+==== Parsing a Software System
 
-// TODO: Warum kann man nicht jetzt schon den Hierarchischen Graph setzen?
+To parse the specified content and to populate the associated database with dependency structure information,
+use the following command:
 
 include::{generatedDocDir}/gettingstarted-parsedb.adoc[]
 
