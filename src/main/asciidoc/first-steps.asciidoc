@@ -1,7 +1,5 @@
 [[first_steps]]
 
-== First Steps
-
 These instructions should help you get Slizaa up and running in 5 to 15 minutes.
 
 === Prerequisites
@@ -39,6 +37,7 @@ Copyright © 2019 Code-Kontor GmbH and others (slizaa@codekontor.io)
 slizaa:>
 ----
 
+=== The Slizaa Console
 You can now run your first command. To list all available commands, use the `help` command.
 
 [source]
@@ -61,13 +60,13 @@ Slizaa Admin Commands
 
 ----
 
-=== Setting up a Structure Database
+=== Create a Structure Database
 
 Before you can parse and analyze a software application, you have to create a instance of a structure database.
 A structure database is the place, where Slizaa stores the 'core' dependency information of a
 parsed software system. It is basically a graph database that can be accessed via the BOLT protocol.
 
-==== Listing all Defined Structure Databases
+==== List all Structure Databases
 
 To list all defined structure databases of a given Slizaa instance, execute the following command:
 
@@ -97,7 +96,7 @@ Make sure that
 
 include::{generatedDocDir}/gettingstarted-setcontentdefinitionprovider.adoc[]
 
-==== Parsing a Software System
+==== Parse the Specified Content
 
 To parse the specified content and to populate the associated database with dependency structure information,
 use the following command:

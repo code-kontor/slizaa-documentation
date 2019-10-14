@@ -40,7 +40,15 @@ public class ListCommandGroupsTest extends AbstractSlizaaIntegrationTest {
 
             StringBuilder groupDescription = new StringBuilder();
             groupDescription.append(group);
-            groupDescription.append("\n\n");
+            groupDescription.append("\n");
+
+            for (Map.Entry<String, MethodTarget> entry : map.entrySet()) {
+                groupDescription.append("        ");
+                groupDescription.append(entry.getKey());
+                groupDescription.append(": ");
+                groupDescription.append(entry.getValue().getHelp());
+                groupDescription.append("\n");
+            }
 
             writeToResultFile(group, groupDescription.toString());
         });

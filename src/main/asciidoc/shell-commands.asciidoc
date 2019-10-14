@@ -6,6 +6,16 @@
 The admin command group contains several commands to monitor and control the overall state
 of the Slizaa server instance.
 
+[source]
+----
+slizaa:>help
+AVAILABLE COMMANDS
+
+[...]
+include::{generatedDocDir}/listcommandgroups-slizaa-admin-commands.adoc[]
+[...]
+----
+
 ==== Show Memory Usage
 
 You can show the current memory usage of a Slizaa server instance using the command `memUsage`.
@@ -72,7 +82,7 @@ The `stopDB` command is defined as follows:
 
 include::{generatedDocDir}/cmdlinehelp-stopdb.adoc[]
 
-==== Delete an existing graph database
+==== Delete an existing database
 
 To delete an existing database instance, use the `deleteDB` command.
 
@@ -92,7 +102,7 @@ The `parseDB` command is defined as follows:
 
 include::{generatedDocDir}/cmdlinehelp-parsedb.adoc[]
 
-===  Slizaa Database Commands - Content Definition
+=== Content Definition
 //
 // Slizaa Database Commands - Content Definition
 //
@@ -120,4 +130,22 @@ include::{generatedDocDir}/cmdlineexample-showresolvedcontentdefinitions.adoc[]
 The `showResolvedContentDefinitions` command is defined as follows:
 
 include::{generatedDocDir}/cmdlinehelp-showresolvedcontentdefinitions.adoc[]
+
+=== Hierarchical Graphs
+
+==== Create Hierarchical Graph
+
+include::{generatedDocDir}/cmdlineexample-createhierarchicalgraph.adoc[]
+
+The `createHierarchicalGraph` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-createhierarchicalgraph.adoc[]
+
+==== Delete Hierarchical Graph
+
+include::{generatedDocDir}/cmdlineexample-deletehierarchicalgraph.adoc[]
+
+The `createHierarchicalGraph` command is defined as follows:
+
+include::{generatedDocDir}/cmdlinehelp-deletehierarchicalgraph.adoc[]
 

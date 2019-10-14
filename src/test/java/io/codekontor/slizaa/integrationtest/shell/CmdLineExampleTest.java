@@ -58,6 +58,13 @@ public class CmdLineExampleTest extends AbstractSlizaaIntegrationTest {
                 .contains("|exampleDB |RUNNING|");
         assertThat(executeCommandAndWriteToResultFile("listDBs"))
                 .contains("|exampleDB |RUNNING|");
+
+        assertThat(executeCommandAndWriteToResultFile("createHierarchicalGraph exampleDB hg01"))
+                .contains("|[hg01]");
+
+        assertThat(executeCommandAndWriteToResultFile("deleteHierarchicalGraph exampleDB hg01"))
+                .doesNotContain("|[hg01]");
+
         assertThat(executeCommandAndWriteToResultFile("stopDB exampleDB"))
                 .contains("|exampleDB |NOT_RUNNING|");
         assertThat(executeCommandAndWriteToResultFile("deleteDB exampleDB"))
