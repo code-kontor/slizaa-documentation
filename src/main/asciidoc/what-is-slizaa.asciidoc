@@ -1,3 +1,47 @@
-[[what-is-slizaa]]
+[[overview]]
+== Overview
 
-TODO
+=== What is Slizaa? ===
+
+Slizaa is a web-based open source workbench for software dependency analysis.
+
+Slizaa provides a set of sophisticated
+tools to interactively explore and visualize the dependencies and the structure of your application, e.g.
+
+* a dependency structure matrix
+* a powerful cross referencer _[Not implemented in Slizaa {slizaaVersion}]_ and
+* a dependency graph viewer _[Not implemented in Slizaa {slizaaVersion}]_
+
+On top of that, Slizaa allows you to search for arbitrary patterns in your code base using the simple but powerful
+Cypher query language directly from within the workbench [Not implemented in Slizaa {slizaaVersion}].
+
+=== Why should I use Slizaa? ===
+
+Maintainability of software is inversely proportional to the number of dependencies.
+
+Without continuous surveillance applications sooner or later become hard to maintain due to unwanted 'accidental' dependencies.
+
+For a continuous and efficient monitoring of your applications dependency structure, tool support is crucial. Slizaa provides an easy to use solution for dependency analysis and visualization.
+
+=== How does Slizaa work? ===
+
+Slizaa allows you to scan arbitrary (Java-based) applications and store their structural information in a graph
+database backend.
+
+All these structural information is accessible directly from within Slizaa using the integrated Cypher query console
+[Not implemented in Slizaa {slizaaVersion}].
+
+As searching for patterns in a flat graph can be a confusing and cluttering task, Slizaa provides customizable
+mappings to create hierarchical views of the stored software structure graph.
+
+Using hierarchical views makes exploring your application's architecture as easy as browsing code in your favorite IDE.
+
+=== What is a Dependency Structure Matrix? ===
+
+The Dependency Structure Matrix (DSM) is a compact and straightforward visual representation of artifacts and their
+dependencies in the form of a square matrix.
+
+image::dependency-structure-matrix.png[Dependency Structure Matrix, 50%]
+
+Slizaa provides an efficient DSM viewer to visualize your project's dependencies at any level (e.g., subsystems,
+packages or files).

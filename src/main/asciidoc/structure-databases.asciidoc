@@ -1,2 +1,0 @@
-[[structure-databases]]
-== Structure Databases

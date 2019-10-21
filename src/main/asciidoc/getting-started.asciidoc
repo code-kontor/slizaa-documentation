@@ -1,12 +1,10 @@
-[[first_steps]]
-
+[[getting_started]]
+== Gettings Started ==
 These instructions should help you get Slizaa up and running in 5 to 15 minutes.
 
 === Prerequisites
 Slizaa requires a Java SE 8 (or greater) environment to run. Refer to the following URL for details
-on how to download and install Java SE 8 or greater: http://www.oracle.com/technetwork/java/javase/
-
-=== Download and Installation
+on how to download and install Java SE 8 or greater: http://www.oracle.com/technetwork/java/javase/.
 
 * Open a Web browser and access the following URL: https://www.codekontor.io/slizaa/download/
 * Download the binary distribution that matches your system (zip for windows, tar.gz for unixes)
@@ -18,7 +16,7 @@ Open a command line console and change the directory to `<SLIZAA_HOME>`.
 To start the server, run the following command:
 
 ----
-java -jar slizaa-web-1.0.0.M3.jar
+java -jar slizaa-web-1.0.0.{slizaaVersion}.jar
 ----
 
 You should see the following information on the command line console:
@@ -107,4 +105,6 @@ include::{generatedDocDir}/gettingstarted-parsedb.adoc[]
 
 include::{generatedDocDir}/gettingstarted-createhierarchicalgraph.adoc[]
 
-DSM-UI !!
+=== The Dependencies View
+
+image::dependencies-view.png[Dependencies View]

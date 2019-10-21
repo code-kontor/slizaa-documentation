@@ -1,15 +1,16 @@
 = Slizaa {slizaaVersion} Reference Guide
 :revdate: {docdate}
 :toc: left
-:toclevels: 2
-:doctype: book
+:doctype: article
 :sectanchors:
 :sectlinks:
 :Author: Gerd Wütherich (gerd.wuetherich@code-kontor.io)
 :generatedDocDir: ../../../target/slizaa-asciidoc
 :sectnums!:
+
 [[Preface]]
 == Preface
+
 This is the reference documentation of Slizaa, an interactive, web-based tool for analyzing and visualizing the dependencies of java-based software systems.
 This guide covers all the functionality provided by Slizaa.
 
@@ -21,29 +22,16 @@ or, better yet, help the community and send a pull request for fixing it!
 This work is licensed under the http://www.gnu.org/licenses/agpl-3.0.html[GNU Affero General Public License version 3.0].
 
 :sectnums:
-= Introduction to Slizaa =
 
-blabla
-
-== What is Slizaa? ==
 include::what-is-slizaa.asciidoc[]
 
-= Getting Started =
+include::getting-started.asciidoc[]
 
-== First Steps ==
-include::first-steps.asciidoc[]
+include::terms-and-concepts.asciidoc[]
 
-= Terms and Concepts =
 
-include::structure-databases.asciidoc[]
-include::hierarchical-graphs.asciidoc[]
-
-= The Slizaa Shell =
-
-include::using-the-slizaa-shell.asciidoc[]
-include::shell-commands.asciidoc[]
-
-= The Slizaa Web Interface
 
 include::slizaa-ui.asciidoc[]
 include::dependencies-view.asciidoc[]
+
+include::using-the-slizaa-shell.asciidoc[]
