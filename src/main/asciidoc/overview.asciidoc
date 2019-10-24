@@ -41,7 +41,8 @@ Using hierarchical views makes exploring your application's architecture as easy
 The Dependency Structure Matrix (DSM) is a compact and straightforward visual representation of artifacts and their
 dependencies in the form of a square matrix.
 
-image::dependency-structure-matrix.png[Dependency Structure Matrix, 50%]
+.Test
+image::dependency-structure-matrix.png["DSM", 50%]
 
 Slizaa provides an efficient DSM viewer to visualize your project's dependencies at any level (e.g., subsystems,
 packages or files).
