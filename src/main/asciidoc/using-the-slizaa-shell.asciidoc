@@ -127,11 +127,23 @@ The `parseDB` command is defined as follows:
 include::{generatedDocDir}/cmdlinehelp-parsedb.adoc[]
 
 === Content Definition Commands
-//
-// Slizaa Database Commands - Content Definition
-//
+You can specify the content of an application that should be analyzed using _content definition commands_. The _content_
+of an application consists of the JARs and/or directories that contain classes belonging to your application.
+
+Instead of listing all JARs and/or directory "manually", you usually use a so-called _content definition providers_
+to specify what should be parsed. Content definition providers implement more convenient ways to specify your content
+(e.g. by simply specifying a directory that contains JARs and/or directories).
+
+In Slizaa {slizaaVersion} there are two different content definition provider you can choose of:
+
+* *directory*: Using the `directory` content definition provider you can specify an arbitrary folder on
+your local drive that contains the JAR files that Slizaa should parse.
+* *mvn*: Using the `mvn` content definition provider you can specify a list of maven artifact that
+Slizaa should parse. Slizaa automatically will download the specified artifacts during the parsing process.
 
 ==== Specify the content to be analyzed.
+
+You can specify your applications content using the `setContentDefinitionProvider` command as shown below:
 
 include::{generatedDocDir}/cmdlineexample-setcontentdefinitionprovider.adoc[]
 
@@ -141,6 +153,8 @@ include::{generatedDocDir}/cmdlinehelp-setcontentdefinitionprovider.adoc[]
 
 ==== List the available Content Definition Types
 
+You can list the available content definition provider types using the `listContentDefinitionProviderFactories` command:
+
 include::{generatedDocDir}/cmdlineexample-listcontentdefinitionproviderfactories.adoc[]
 
 The `listContentDefinitionProviderFactories` command is defined as follows:
@@ -148,6 +162,9 @@ The `listContentDefinitionProviderFactories` command is defined as follows:
 include::{generatedDocDir}/cmdlinehelp-listcontentdefinitionproviderfactories.adoc[]
 
 ==== Show Resolved Content Definitions
+
+To simulate the resolving process and fetch a list of all JARs and/or directories that are defined by a content
+definition use the `showResolvedContentDefinitions` command:
 
 include::{generatedDocDir}/cmdlineexample-showresolvedcontentdefinitions.adoc[]
 
@@ -158,6 +175,8 @@ include::{generatedDocDir}/cmdlinehelp-showresolvedcontentdefinitions.adoc[]
 === Hierarchical Graphs
 
 ==== Create Hierarchical Graph
+
+You can create a new hierarchical graph mapping for database using the `createHierarchicalGraph` command.
 
 include::{generatedDocDir}/cmdlineexample-createhierarchicalgraph.adoc[]
 

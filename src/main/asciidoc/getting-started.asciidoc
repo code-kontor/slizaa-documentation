@@ -79,12 +79,6 @@ include::{generatedDocDir}/gettingstarted-createdb.adoc[]
 ==== Defining your Application Content
 
 Once you have created a new structure database, you must specify the content that should be analyzed.
-In Slizaa {slizaaVersion} there are two different content definition provider you can chosse of:
-
-* *directory*: Using the `directory` content definition provider you can specify an arbitrary folder on
-your local drive that contains the JAR files that Slizaa should parse.
-* *mvn*: Using the `mvn` content definition provider you can specify a list of maven artifact that
-Slizaa should parse. Slizaa automatically will download the specified artifacts during the parsing process.
 
 In this tutorial we use the `directory` content definition provider type to specify a folder on the local drive.
 Make sure that
