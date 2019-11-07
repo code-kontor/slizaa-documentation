@@ -1,0 +1,31 @@
+[[dependencies-view]]
+== The Dependencies View
+
+
+[#dependencies-view-hierarchical-graph]
+==== The Hierarchical Graph
+
+The Dependencies View visualizes the hierarchical representation of the parsed system in upper left corner (_Hierarchical
+Graph_).
+
+.Hierarchical Graph
+image::.png[Hierarchical Graph, pdfwidth=90%, width=90%, align="center"]
+
+[#dependencies-view-dependencies-overview]
+==== Dependencies Overview
+
+The _Dependencies Overview_ visualizes the dependencies between the children of the selected element in a Dependency
+Structure Matrix. You can select an arbitrary node in the hierarchical graph to inspect the dependencies of its children
+in the Dependencies Overview.
+
+.Dependencies Overview
+image::dependencies-view-dependencies-overview.png[Hierarchical Graph, pdfwidth=90%, width=90%, align="center"]
+
+[#dependencies-view-dependencies-details]
+==== Dependencies Details
+
+You can inspect details of dependencies in the _Dependencies Details_ view in the lower part of the window. To do so,
+select a cell in the Dependency Structure Matrix by clicking on it.
+
+.Dependencies Details
+image::dependencies-view-dependencies-details.png[Hierarchical Graph, pdfwidth=90%, width=90%, align="center"]

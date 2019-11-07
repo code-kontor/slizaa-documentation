@@ -24,14 +24,5 @@ This work is licensed under the http://www.gnu.org/licenses/agpl-3.0.html[GNU Af
 :sectnums:
 
 include::overview.asciidoc[]
-
 include::getting-started.asciidoc[]
-
-include::terms-and-concepts.asciidoc[]
-
-
-
-include::slizaa-ui.asciidoc[]
-include::dependencies-view.asciidoc[]
-
 include::using-the-slizaa-shell.asciidoc[]

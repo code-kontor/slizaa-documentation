@@ -15,8 +15,9 @@ Open a command line console and change the directory to `<SLIZAA_HOME>`.
 
 To start the server, run the following command:
 
+[subs="attributes"]
 ----
-java -jar slizaa-web-1.0.0.{slizaaVersion}.jar
+java -jar slizaa-web-{slizaaVersion}.jar
 ----
 
 You should see the following information on the command line console:
@@ -72,19 +73,25 @@ include::{generatedDocDir}/gettingstarted-listdbs.adoc[]
 
 ==== Creating a new Structure Database
 
-To create a new structure database instance, you can use the `createDB` command.
+To create a new structure database instance, you can use the `createDB` command. You must provide a unique database
+name as the first parameter.
 
 include::{generatedDocDir}/gettingstarted-createdb.adoc[]
 
 ==== Defining your Application Content
 
-Once you have created a new structure database, you must specify the content that should be analyzed.
+Once you have created a new structure database, you must specify the content that should be analyzed. Slizaa provides
+multiple _content definition providers_ to provide a convenient way to specify with JARs and/or folders belong to your
+application (see <<ContenDefinitionProviders,Content Definition Providers>> for more information).
 
-In this tutorial we use the `directory` content definition provider type to specify a folder on the local drive.
-Make sure that
+In this tutorial we use the `directory` content definition provider type to specify a folder on the local drive that
+contains JAR files taht should be parsed. Make sure that
 
 * the specified folder exists and
 * the specified folder contains on or more JAR files.
+
+CAUTION: If you using this command on Windows in a ordinary windows shell, make sure that you escape the Backslashes
+that act as file separators (e.g. type `C:\\temp\\sl` instead of `C:\temp\sl`).
 
 include::{generatedDocDir}/gettingstarted-setcontentdefinitionprovider.adoc[]
 
@@ -97,8 +104,40 @@ include::{generatedDocDir}/gettingstarted-parsedb.adoc[]
 
 === Create a hierarchical graph
 
+Once you have populated the internal graph database, you can create a hierarchical view of parsed software system by
+using the `createHIerrachicalGraph` command as shown below.
+
 include::{generatedDocDir}/gettingstarted-createhierarchicalgraph.adoc[]
 
 === The Dependencies View
 
-image::dependencies-view.png[Dependencies View]
+To inspect and analyze the parsed software system,
+
+* open a Web browser and access the following URL: https://localhost:8085/slizaa. The Slizaa web application
+automatically opens the _Dependencies View_.
+
+Select the desired database in the database selector in the upper right corner, as well as the desired hierarchical
+graph.
+
+.The Dependencies View
+image::dependencies-view.png[Dependencies View, pdfwidth=90%, width=90%, align="center"]
+
+==== The Hierarchical Graph
+
+The Dependencies View visualizes the hierarchical representation of the parsed system in upper left corner (_Hierarchical
+Graph_). You can find further information on the Hierarchical Graph view <<dependencies-view-hierarchical-graph, here>>.
+
+==== Dependencies Overview
+
+The _Dependencies Overview_ visualizes the dependencies between the children of the selected element in a Dependency
+Structure Matrix. You can select an arbitrary node in the hierarchical graph to inspect the dependencies of its children
+in the Dependencies Overview. You can find further information on the Dependencies Overview
+<<dependencies-view-hierarchical-graph, here>>.
+
+==== Dependencies Details
+
+You can inspect details of dependencies in the _Dependencies Details_ view in the lower part of the window. To do so,
+select a cell in the Dependency Structure Matrix by clicking on it. You can find further information on inspecting
+Dependencies Details <<dependencies-view-dependencies-details, here>>.
+
+
