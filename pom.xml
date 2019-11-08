@@ -25,12 +25,12 @@
     <parent>
         <groupId>io.codekontor.slizaa</groupId>
         <artifactId>slizaa-server-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0.M3</version>
     </parent>
 
     <groupId>io.codekontor.slizaa.documentation</groupId>
     <artifactId>slizaa-documentation</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0.M3</version>
     <name>Slizaa Documentation</name>
 
     <properties>
