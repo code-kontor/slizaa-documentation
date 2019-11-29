@@ -3,14 +3,14 @@
 These instructions should help you get Slizaa up and running in 5 to 15 minutes.
 
 === Prerequisites
-Slizaa requires a Java SE 8 (or greater) environment to run. Refer to the following URL for details
-on how to download and install Java SE 8 or greater: http://www.oracle.com/technetwork/java/javase/.
+Slizaa requires a Java SE 8 (or higher) environment to run. Refer to the following URL for details
+on how to download and install Java SE 8 or higher: http://www.oracle.com/technetwork/java/javase/.
 
 * Open a Web browser and access the following URL: https://www.codekontor.io/slizaa/download/
 * Download the binary distribution that matches your system (zip for windows, tar.gz for unixes)
 * Extract the archive to a new folder on your hard drive (in this documentation we will reference this directory as `<SLIZAA_HOME>`)
 
-=== Start the Server
+=== Starting the Server
 Open a command line console and change the directory to `<SLIZAA_HOME>`.
 
 To start the server, run the following command:
@@ -20,7 +20,7 @@ To start the server, run the following command:
 java -jar slizaa-web-{slizaaVersion}.jar
 ----
 
-You should see the following information on the command line console:
+You should see the following information on the console:
 
 ----
          ___
@@ -59,13 +59,13 @@ Slizaa Admin Commands
 
 ----
 
-=== Create a Structure Database
+=== Creating a Structure Database
 
-Before you can parse and analyze a software application, you have to create a instance of a structure database.
-A structure database is the place, where Slizaa stores the 'core' dependency information of a
-parsed software system. It is basically a graph database that can be accessed via the BOLT protocol.
+Before you can parse and analyze a software application, you have to create an instance of a structure database.
+A structure database is a place, where Slizaa stores the 'core' dependency information of a
+parsed software system. It is basically a graph database that is accessible via the BOLT protocol.
 
-==== List all Structure Databases
+==== Listing all Structure Databases
 
 To list all defined structure databases of a given Slizaa instance, execute the following command:
 
@@ -81,17 +81,18 @@ include::{generatedDocDir}/gettingstarted-createdb.adoc[]
 ==== Defining your Application Content
 
 Once you have created a new structure database, you must specify the content that should be analyzed. Slizaa provides
-multiple _content definition providers_ to provide a convenient way to specify with JARs and/or folders belong to your
-application (see <<ContenDefinitionProviders,Content Definition Providers>> for more information).
+multiple _content definition providers_ to provide a convenient way to specify which JARs or folders belong to your
+application.
+// (see <<ContenDefinitionProviders,Content Definition Providers>> for more information).
 
-In this tutorial we use the `directory` content definition provider type to specify a folder on the local drive that
-contains JAR files taht should be parsed. Make sure that
+In this tutorial, we use the `directory` content definition provider type to specify a folder on the local drive that
+contains JAR files that should be parsed. Make sure that
 
 * the specified folder exists and
 * the specified folder contains on or more JAR files.
 
-CAUTION: If you using this command on Windows in a ordinary windows shell, make sure that you escape the Backslashes
-that act as file separators (e.g. type `C:\\temp\\sl` instead of `C:\temp\sl`).
+CAUTION: If you are using this command on Windows in an ordinary windows shell, make sure that you escape the Backslashes
+that act as file separators (e.g., type `C:\\temp\\sl` instead of `C:\temp\sl`).
 
 include::{generatedDocDir}/gettingstarted-setcontentdefinitionprovider.adoc[]
 
@@ -104,8 +105,8 @@ include::{generatedDocDir}/gettingstarted-parsedb.adoc[]
 
 === Create a hierarchical graph
 
-Once you have populated the internal graph database, you can create a hierarchical view of parsed software system by
-using the `createHIerrachicalGraph` command as shown below.
+Once you have populated the internal graph database, you can create a hierarchical view of the parsed software system by
+using the `createHierarchicalGraph` command, as shown below.
 
 include::{generatedDocDir}/gettingstarted-createhierarchicalgraph.adoc[]
 
@@ -113,8 +114,8 @@ include::{generatedDocDir}/gettingstarted-createhierarchicalgraph.adoc[]
 
 To inspect and analyze the parsed software system,
 
-* open a Web browser and access the following URL: https://localhost:8085/slizaa. The Slizaa web application
-automatically opens the _Dependencies View_.
+* open a Web browser, and access the following URL: https://localhost:8085/slizaa. The Slizaa web application
+automatically opens with the _Dependencies View_.
 
 Select the desired database in the database selector in the upper right corner, as well as the desired hierarchical
 graph.
@@ -124,20 +125,22 @@ image::dependencies-view.png[Dependencies View, pdfwidth=90%, width=90%, align="
 
 ==== The Hierarchical Graph
 
-The Dependencies View visualizes the hierarchical representation of the parsed system in upper left corner (_Hierarchical
-Graph_). You can find further information on the Hierarchical Graph view <<dependencies-view-hierarchical-graph, here>>.
+
+The Dependencies View visualizes the hierarchical representation of the parsed system in the upper left part (_Hierarchical
+Graph_).
+// You can find further information on the Hierarchical Graph view <<dependencies-view-hierarchical-graph, here>>.
 
 ==== Dependencies Overview
 
 The _Dependencies Overview_ visualizes the dependencies between the children of the selected element in a Dependency
 Structure Matrix. You can select an arbitrary node in the hierarchical graph to inspect the dependencies of its children
-in the Dependencies Overview. You can find further information on the Dependencies Overview
-<<dependencies-view-hierarchical-graph, here>>.
+in the Dependencies Overview.
+// You can find further information on the Dependencies Overview <<dependencies-view-hierarchical-graph, here>>.
 
 ==== Dependencies Details
 
 You can inspect details of dependencies in the _Dependencies Details_ view in the lower part of the window. To do so,
-select a cell in the Dependency Structure Matrix by clicking on it. You can find further information on inspecting
-Dependencies Details <<dependencies-view-dependencies-details, here>>.
+select a cell in the Dependency Structure Matrix by clicking on it.
+//  You can find further information on inspecting Dependencies Details <<dependencies-view-dependencies-details, here>>.
 
 

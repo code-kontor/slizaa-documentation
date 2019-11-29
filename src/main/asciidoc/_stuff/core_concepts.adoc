@@ -6,17 +6,6 @@
 
 == What is slizaa?
 
-*_slizaa is an interactive workbench for graph-based analysis of software structures._*
-
-slizaa is centered around the concept of <<What is a Software Structure Graph?,Software Structure Graphs>>
-and is based on <<What is Neo4j?, Neo4j>>. slizaa allows you to map flat Software Structures Graphs stored in Neo4j to arbitrary <<Flat graphs vs. hierarchical graphs, hierarchical graphs>> that can be
-interactively inspected, analyzed and visualized using specialized, 'hierarchical-graph-aware' tools. Using the <<What is the Cypher Query Language?, Cypher Query Language>> you can defined
-your own custom queries and map the results to slizza's in-memory graphs.
-
-image::images/basic_concepts/slizaa_screenshot.png[caption="Figure 1. ", title="slizaa workbench", width=850]
-
-slizaa provides out-of-the-box-support for <<What is jQAssistant?, jQAssistant>>, an outstanding QA tool which allows the creation of Software Structure Graphs for java based system.
-
 == What is a Software Structure Graph?
 
 Software systems consist of multiple _elements_, e.g. class files, types, packages or configuration files. Usually all of these elements are related somehow to each other.

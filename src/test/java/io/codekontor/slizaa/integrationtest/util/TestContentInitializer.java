@@ -20,7 +20,6 @@ package io.codekontor.slizaa.integrationtest.util;
 import io.codekontor.mvnresolver.MvnResolverServiceFactoryFactory;
 import io.codekontor.mvnresolver.api.IMvnResolverService;
 import org.apache.commons.io.FileUtils;
-import org.junit.Before;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,7 +49,7 @@ public class TestContentInitializer {
 
             // setup the mvm resolver service
             _mvnResolverService = MvnResolverServiceFactoryFactory
-                    .createNewResolverServiceFactory().newMvnResolverService().create();
+                    .createNewResolverServiceFactory().newMvnResolverService().withMavenCentralRepo().create();
 
             // create the example directory
             _exampleDirectory = new File(EXAMPLE_DIRECTORY);
@@ -78,13 +77,14 @@ public class TestContentInitializer {
     }
 
     private String[] contentList() {
+
+        SimpleVersionResolver.SlizaaVersions slizaaVersions = SimpleVersionResolver.getSlizaaVersions();
+
         String[] contentList = new String[SlizaaArtifactList.FILES_TO_ANALYZE.length];
         for (int i = 0; i < contentList.length; i++) {
             contentList[i] = SlizaaArtifactList.FILES_TO_ANALYZE[i]
-                    // TODO
-                    .replace("$VERSION_MVNRESOLVER$", "1.0.0.RC1")
-                    // TODO
-                    .replace("$VERSION_SLIZAA$", "1.0.0-SNAPSHOT");
+                    .replace("$VERSION_MVNRESOLVER$", slizaaVersions.getMvnResolverVersion())
+                    .replace("$VERSION_SLIZAA$", slizaaVersions.getProjectVersion());
 
         }
         return contentList;

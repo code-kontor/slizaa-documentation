@@ -64,7 +64,7 @@ include::{generatedDocDir}/cmdlinehelp-gc.adoc[]
 
 === Database Commands
 
-The commands in the database command group allows you to inspect and manipulate the structure databases in a Slizaa
+The commands in the database command group allow you to inspect and manipulate the structure databases in a Slizaa
 instance.
 
 ==== List all configured databases
@@ -128,11 +128,11 @@ include::{generatedDocDir}/cmdlinehelp-parsedb.adoc[]
 
 === Content Definition Commands
 You can specify the content of an application that should be analyzed using _content definition commands_. The _content_
-of an application consists of the JARs and/or directories that contain classes belonging to your application.
+of an application consists of the JARs and directories that contain classes belonging to your application.
 
-Instead of listing all JARs and/or directory "manually", you usually use a so-called _content definition providers_
-to specify what should be parsed. Content definition providers implement more convenient ways to specify your content
-(e.g. by simply specifying a directory that contains JARs and/or directories).
+Instead of listing all JARs and directory "manually", you usually use a so-called _content definition providers_
+to specify what should be parsed. Content definition providers implement more convenient ways to define your content
+(e.g. by simply specifying a directory that contains JARs and directories).
 
 In Slizaa {slizaaVersion} there are two different content definition provider you can choose of:
 
@@ -163,7 +163,7 @@ include::{generatedDocDir}/cmdlinehelp-listcontentdefinitionproviderfactories.ad
 
 ==== Show Resolved Content Definitions
 
-To simulate the resolving process and fetch a list of all JARs and/or directories that are defined by a content
+To simulate the resolving process and fetch a list of all JARs and directories that are defined by a content
 definition use the `showResolvedContentDefinitions` command:
 
 include::{generatedDocDir}/cmdlineexample-showresolvedcontentdefinitions.adoc[]
@@ -172,11 +172,11 @@ The `showResolvedContentDefinitions` command is defined as follows:
 
 include::{generatedDocDir}/cmdlinehelp-showresolvedcontentdefinitions.adoc[]
 
-=== Hierarchical Graphs
+=== Hierarchical Graph Commands
 
 ==== Create Hierarchical Graph
 
-You can create a new hierarchical graph mapping for database using the `createHierarchicalGraph` command.
+You can create a new hierarchical graph mapping for a database using the `createHierarchicalGraph` command.
 
 include::{generatedDocDir}/cmdlineexample-createhierarchicalgraph.adoc[]
 

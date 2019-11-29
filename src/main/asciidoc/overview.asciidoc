@@ -9,13 +9,13 @@ Slizaa is a web-based open source workbench for software dependency analysis.
 image::slizaa-web-app.png["Slizaa Web Application"]
 
 Slizaa provides a set of sophisticated tools to interactively explore and visualize the dependencies and the structure
-of your application, e.g.
+of java-based applications, e.g.
 
 * a dependency structure matrix
 * a powerful cross referencer _[Not implemented in Slizaa {slizaaVersion}]_ and
 * a dependency graph viewer _[Not implemented in Slizaa {slizaaVersion}]_
 
-On top of that, Slizaa allows you to search for arbitrary patterns in your code base using the simple but powerful
+On top of that, Slizaa allows you to search for arbitrary patterns in your codebase using the simple but powerful
 Cypher query language directly from within the workbench [Not implemented in Slizaa {slizaaVersion}].
 
 === Why should I use Slizaa? ===
@@ -23,38 +23,23 @@ Cypher query language directly from within the workbench [Not implemented in Sli
 Maintainability of software is inversely proportional to the number of dependencies. Without continuous surveillance
 applications sooner or later become hard to maintain due to unwanted 'accidental' dependencies.
 
-For a continuous and efficient monitoring of your applications dependency structure, tool support is crucial. Slizaa
+For continuous and efficient monitoring of your application's dependency structure, tool support is crucial. Slizaa
 provides an easy-to-use, web-based solution for dependency analysis and visualization.
 
 === How does Slizaa work? ===
 
 Slizaa allows you to scan arbitrary (Java-based) applications and store their structural information in a graph
-database backend.
+database backend powered by Neo4j.
 
 All these structural information is accessible directly from within Slizaa using the integrated Cypher query console
 [Not implemented in Slizaa {slizaaVersion}].
 
 As searching for patterns in a flat graph can be a confusing and cluttering task, Slizaa provides customizable
-mappings to create hierarchical views of the stored software structure graph.
-
-Using hierarchical views makes exploring your application's architecture as easy as browsing code in your favorite IDE.
-
-=== What is a Hierarchical View? ===
-
-A Hierarchical View structures the elements of a software system (e.g. JARs, packages, types) in a hierarchy using
-is-contained-in relationships. For software developers, hierarchical views are the natural way of navigating through
-software applications.
+mappings to create hierarchical views of the stored software structure graph. A _hierarchical view_ structures the
+elements of a software system (e.g., JARs, packages, types) in a hierarchy using 'is-contained-in' relationships.
+For software developers, hierarchical views are the natural way of navigating through software applications.
 
 .Hierarchical View
-image::hierarchical-view.png["Hierarchical View", width=350px, align="center"]
+image::hierarchical-view.png["Hierarchical View", width=300px, align="center"]
 
-=== What is a Dependency Structure Matrix? ===
-
-The Dependency Structure Matrix (DSM) is a compact and straightforward visual representation of artifacts and their
-dependencies in the form of a square matrix.
-
-.Dependency Structure Matrix (DSM)
-image::dependency-structure-matrix.png["Hierarchical View", pdfwidth=60%, width=60%, align="center"]
-
-Slizaa provides an efficient DSM viewer to visualize your project's dependencies at any level (e.g., subsystems,
-packages or files).
+Using hierarchical views makes exploring your application's architecture as easy as browsing code in your favorite IDE.
